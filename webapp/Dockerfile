@@ -13,21 +13,21 @@ ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
 ENV REACT_APP_USERS_SERVICE_URL $REACT_APP_USERS_SERVICE_URL
 
-RUN npm install create-react-app@1.3.0 --global
-
 # install and cache app dependencies
-# ADD package.json /usr/src/app/package.json
-# RUN npm install --silent
+ADD package.json /usr/src/app/package.json
+RUN npm install 
+RUN npm install react-scripts -g --silent
 # RUN npm install pushstate-server -g --silent
 
-# add app
-ADD . /usr/src/app
+ADD public /usr/src/app/public
+ADD src /usr/src/app/src
 
 # build react app
-# RUN npm run build
+RUN npm run build
 
 # start app
 # CMD ["pushstate-server", "build"]
 # CMD ["create-react-app","."]
 # CMD ["/bin/bash","startup.sh"]
 CMD ["npm", "start"]
+
