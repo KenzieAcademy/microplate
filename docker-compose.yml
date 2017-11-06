@@ -38,7 +38,7 @@ services:
         - NODE_ENV=development
         - REACT_APP_USERS_SERVICE_URL=http://127.0.0.1
     volumes:
-      - './webapp:/usr/src/app'
+      - './webapp/src:/usr/src/app/src'
     ports:
       - '9000:3000' # expose ports - HOST:CONTAINER
     depends_on:
